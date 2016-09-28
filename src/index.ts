@@ -27,12 +27,12 @@ export = function openLSParser (xml: string, onSuccess: successCallback, onFail:
             Depth: 'Country'
         };
 
-        for (var i = 0; i < a.Address[0].Place.length; i++) {
+        for (let place of a.Address[0].Place) {
             resp.Place[
-                a.Address[0].Place[i].$.type
-            ] = a.Address[0].Place[i]._
+                place.$.type
+            ] = place._
 
-            if (resp.Depth === 'Country') resp.Depth = a.Address[0].Place[i].$.type; 
+            if (resp.Depth === 'Country') resp.Depth = place.$.type; 
         };
 
         if (a.Address[0].PostalCode) resp.PostalCode = a.Address[0].PostalCode[0];
@@ -62,7 +62,7 @@ export = function openLSParser (xml: string, onSuccess: successCallback, onFail:
                 onFail();
             };
         } else {
-            if (r.GeocodeResponse.GeocodeResponseList) {
+            if ('GeocodeResponseList' in r.GeocodeResponse) {
                 var resp: openLSResponse = {};
 
                 for (let address of r.GeocodeResponse.GeocodeResponseList[0].GeocodedAddress) {
@@ -77,9 +77,8 @@ export = function openLSParser (xml: string, onSuccess: successCallback, onFail:
 
                 onSuccess(resp);
             } else {
-                onFail();
+                onSuccess({});
             };
-
         };
     });
 };

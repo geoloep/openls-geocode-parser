@@ -18,10 +18,11 @@ module.exports = function openLSParser(xml, onSuccess, onFail) {
             Place: {},
             Depth: 'Country'
         };
-        for (var i = 0; i < a.Address[0].Place.length; i++) {
-            resp.Place[a.Address[0].Place[i].$.type] = a.Address[0].Place[i]._;
+        for (var _i = 0, _a = a.Address[0].Place; _i < _a.length; _i++) {
+            var place = _a[_i];
+            resp.Place[place.$.type] = place._;
             if (resp.Depth === 'Country')
-                resp.Depth = a.Address[0].Place[i].$.type;
+                resp.Depth = place.$.type;
         }
         ;
         if (a.Address[0].PostalCode)
@@ -50,7 +51,7 @@ module.exports = function openLSParser(xml, onSuccess, onFail) {
             ;
         }
         else {
-            if (r.GeocodeResponse.GeocodeResponseList) {
+            if ('GeocodeResponseList' in r.GeocodeResponse) {
                 var resp = {};
                 for (var _i = 0, _a = r.GeocodeResponse.GeocodeResponseList[0].GeocodedAddress; _i < _a.length; _i++) {
                     var address = _a[_i];
@@ -64,7 +65,7 @@ module.exports = function openLSParser(xml, onSuccess, onFail) {
                 onSuccess(resp);
             }
             else {
-                onFail();
+                onSuccess({});
             }
             ;
         }

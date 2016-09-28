@@ -4,8 +4,9 @@
   "description": "Utilities for parsing openls geocode repsonses",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "compile": "tsc"
+    "test": "jasmine",
+    "compile": "tsc",
+    "jasmine-init": "jasmine init"
   },
   "repository": {
     "type": "git",
@@ -18,8 +19,11 @@
   },
   "homepage": "https://github.com/geoloep/openls-geocode-parser#readme",
   "dependencies": {
-    "@types/xml2js": "0.0.28",
     "xml2js": "*",
     "xmldom": "*"
+  },
+  "devDependencies": {
+    "@types/xml2js": "0.0.28",
+    "jasmine": "^2.5.2"
   }
 }
