@@ -1,0 +1,25 @@
+{
+  "name": "openls-geocode-parser",
+  "version": "0.0.1",
+  "description": "Utilities for parsing openls geocode repsonses",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compile": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/geoloep/openls-geocode-parser.git"
+  },
+  "author": "Geoloep",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geoloep/openls-geocode-parser/issues"
+  },
+  "homepage": "https://github.com/geoloep/openls-geocode-parser#readme",
+  "dependencies": {
+    "@types/xml2js": "0.0.28",
+    "xml2js": "*",
+    "xmldom": "*"
+  }
+}
