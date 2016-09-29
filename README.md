@@ -1,4 +1,4 @@
-OpenLS Goecode request parser
+OpenLS Geocode request parser
 =============================
 
 This utility parses OpenLS geocode request xml files into JavaScript Objects.
