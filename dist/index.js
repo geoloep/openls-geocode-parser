@@ -12,43 +12,42 @@ module.exports = function openLSParser(xml, onSuccess, onFail) {
         var resp = {
             Point: {
                 srsName: a.Point[0].$.srsName,
-                pos: parsePos(a.Point[0].pos[0]._)
+                pos: parsePos(a.Point[0].pos[0]._),
             },
             Country: a.Address[0].$.countryCode,
             Place: {},
-            Depth: 'Country'
+            Depth: 'Country',
         };
         for (var _i = 0, _a = a.Address[0].Place; _i < _a.length; _i++) {
             var place = _a[_i];
             resp.Place[place.$.type] = place._;
-            if (resp.Depth === 'Country')
+            if (resp.Depth === 'Country') {
                 resp.Depth = place.$.type;
+            }
         }
-        ;
-        if (a.Address[0].PostalCode)
+        if (a.Address[0].PostalCode) {
             resp.PostalCode = a.Address[0].PostalCode[0];
+        }
         if (a.Address[0].StreetAddress) {
             resp.StreetAddress = {};
             resp.Depth = 'Street';
             if (a.Address[0].StreetAddress[0].Building) {
-                resp.StreetAddress["Building"] = a.Address[0].StreetAddress[0].Building[0].$;
+                resp.StreetAddress['Building'] = a.Address[0].StreetAddress[0].Building[0].$;
                 resp.Depth = 'Building';
             }
-            ;
-            if (a.Address[0].StreetAddress[0].Street)
-                resp.StreetAddress["Street"] = a.Address[0].StreetAddress[0].Street[0];
+            if (a.Address[0].StreetAddress[0].Street) {
+                resp.StreetAddress['Street'] = a.Address[0].StreetAddress[0].Street[0];
+            }
         }
-        ;
         return resp;
     };
     xml2js.parseString(xml, {
-        tagNameProcessors: [xml2js.processors.stripPrefix]
+        tagNameProcessors: [xml2js.processors.stripPrefix],
     }, function (err, r) {
         if (err) {
             if (onFail) {
                 onFail();
             }
-            ;
         }
         else {
             if ('GeocodeResponseList' in r.GeocodeResponse) {
@@ -61,14 +60,11 @@ module.exports = function openLSParser(xml, onSuccess, onFail) {
                     }
                     resp[parsed.Depth].push(parsed);
                 }
-                ;
                 onSuccess(resp);
             }
             else {
                 onSuccess({});
             }
-            ;
         }
-        ;
     });
 };

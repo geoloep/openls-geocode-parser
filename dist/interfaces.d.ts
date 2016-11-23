@@ -1,4 +1,4 @@
-export interface parsedAddress {
+export interface IParsedAddress {
     Point: {
         srsName: string;
         pos: number[];
@@ -14,9 +14,6 @@ export interface parsedAddress {
     };
     Depth: string;
 }
-export interface openLSResponse {
-    [index: string]: parsedAddress[];
-}
-export interface failCallback {
-    (): any;
+export interface IOpenLSResponse {
+    [index: string]: IParsedAddress[];
 }

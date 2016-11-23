@@ -18,15 +18,3 @@ export interface IParsedAddress {
 export interface IOpenLSResponse {
     [index: string]: IParsedAddress[];
 };
-
-// export interface successCallback {
-//     (data: openLSResponse): any;
-// };
-
-// export interface successCallback {
-//     (this: void, data: openLSResponse) => void;
-// }
-
-// export interface failCallback {
-//     (): any;
-// }
