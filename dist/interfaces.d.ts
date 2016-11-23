@@ -17,9 +17,6 @@ export interface parsedAddress {
 export interface openLSResponse {
     [index: string]: parsedAddress[];
 }
-export interface successCallback {
-    (data: openLSResponse): any;
-}
 export interface failCallback {
     (): any;
 }

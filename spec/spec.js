@@ -122,7 +122,7 @@ describe("openLSParser", function() {
       function(data) {
         expect(data.Building).toBeDefined();
         expect(data.Building[0]).toBeDefined();
-        expect(data.Building[0].Point.srsName).toBeDefined();
+        expect(data.Building[0].Point.pos).toBeDefined();
         expect(data.Building[0].Point.pos).toEqual([121394.0, 487383.0]);
       },
       function() {
