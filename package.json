@@ -1,6 +1,6 @@
 {
   "name": "openls-geocode-parser",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Utilities for parsing openls geocode repsonses",
   "main": "dist/index.js",
   "scripts": {
@@ -19,8 +19,7 @@
   },
   "homepage": "https://github.com/geoloep/openls-geocode-parser#readme",
   "dependencies": {
-    "xml2js": "*",
-    "xmldom": "*"
+    "xml2js": "*"
   },
   "devDependencies": {
     "@types/xml2js": "0.0.28",
