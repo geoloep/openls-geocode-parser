@@ -13,8 +13,8 @@ export interface IParsedAddress {
         [index: string]: string;
     };
     Depth: string;
-};
+}
 
 export interface IOpenLSResponse {
     [index: string]: IParsedAddress[];
-};
+}
